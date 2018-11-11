@@ -1,2 +1,2 @@
-# qol
+### qol
 Random scripts
