@@ -2,14 +2,15 @@
 # Provided a destination, a source, and a block of text from theTVDB, should
 # output a simple list of cmd commands to create HLinks for Plex
 ###############################################################################
-import os
+import re
 
 def splitByNewLine(array, userInput):
     #The user's input is treated slightly different when each line is entered by hand
     #or pasted as a block of text. To remedy this, the all user input as it is received,
     #split it by newlines, and append each of them to the supplied array
     split = userInput.split('\n')
-    print split
+    for x in split:
+        array.append(x)
     return array
 
 def main():
@@ -23,12 +24,13 @@ def main():
             line = raw_input("")
         except EOFError:
             break
-        blob = (line)
-    print "dest: " + dest
-    print "source: " + source
+        blob = splitByNewLine(blob, line)
+    #print "dest: " + dest
+    #print "source: " + source
     print "blob: "
-    print blob
-    ##print "tempblob: " + tempBlob
+    for x in blob:
+        print x
+    #print "tempblob: " + tempBlob
 main()
 
 """1	There Are Monsters Among Us	04/02/2006	
