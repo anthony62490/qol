@@ -5,9 +5,13 @@
 import sys, re
 
 def main(filename):
+    destfilename = filename
     title = re.search('([a-zA-Z_\-0-9]*)(\.swf$)', filename, re.M).group(1)
     altTitle = input("Input a title or enter nothing to accept the default: ")
     if altTitle:
+        # subract the length of the matched filename from the full path (+4) to get the base directory and add it onto the new title
+        # Also add a '.swf' to the end so that it still fits into later logic
+        destfilename = filename[0:-(len(title) + 4)] + altTitle + '.swf'
         title = altTitle
     out = """<!DOCTYPE html >
     <html lang="en" xml:lang="en">
@@ -60,7 +64,7 @@ def main(filename):
                     </div>
             </body>
     </html>"""
-    Html_file= open(filename[:-4] + ".html", "w")
+    Html_file= open(destfilename[:-4] + ".html", "w")
     Html_file.write(out)
     Html_file.close()
 
