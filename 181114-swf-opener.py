@@ -57,6 +57,7 @@ def main(filename):
                     </div>
             </body>
     </html>"""
+    print(out)
 
 if __name__== "__main__":
     main(str(sys.argv[1]))
