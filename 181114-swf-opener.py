@@ -6,8 +6,9 @@ import sys, re
 
 def main(filename):
     title = re.search('([a-zA-Z_\-0-9]*)(\.swf$)', filename, re.M).group(1)
-##    print('\nfile:', filename)
-##    print('name:', title)
+    altTitle = input("Input a title or enter nothing to accept the default: ")
+    if altTitle:
+        title = altTitle
     out = """<!DOCTYPE html >
     <html lang="en" xml:lang="en">
             <head>
@@ -30,6 +31,7 @@ def main(filename):
                                     <param name="wmode" value="window" />
                                     <param name="scale" value="default" />
                                     <param name="menu" value="true" />
+                                    <param name="volume" value="0" />
                                     <param name="devicefont" value="false" />
                                     <param name="salign" value="" />
                                     <param name="allowScriptAccess" value="sameDomain" />
@@ -43,6 +45,7 @@ def main(filename):
                                             <param name="wmode" value="window" />
                                             <param name="scale" value="default" />
                                             <param name="menu" value="true" />
+                                            <param name="volume" value="0" />
                                             <param name="devicefont" value="false" />
                                             <param name="salign" value="" />
                                             <param name="allowScriptAccess" value="sameDomain" />
@@ -57,12 +60,9 @@ def main(filename):
                     </div>
             </body>
     </html>"""
-##    print(out)
     Html_file= open(filename[:-4] + ".html", "w")
     Html_file.write(out)
     Html_file.close()
-    
-##    print(Html_file)
 
 if __name__== "__main__":
     main(str(sys.argv[1]))
