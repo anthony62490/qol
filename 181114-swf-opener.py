@@ -6,8 +6,8 @@ import sys, re
 
 def main(filename):
     title = re.search('([a-zA-Z_\-0-9]*)(\.swf$)', filename, re.M).group(1)
-    print('\nfile:', filename)
-    print('name:', title)
+##    print('\nfile:', filename)
+##    print('name:', title)
     out = """<!DOCTYPE html >
     <html lang="en" xml:lang="en">
             <head>
@@ -57,7 +57,12 @@ def main(filename):
                     </div>
             </body>
     </html>"""
-    print(out)
+##    print(out)
+    Html_file= open(filename[:-4] + ".html", "w")
+    Html_file.write(out)
+    Html_file.close()
+    
+##    print(Html_file)
 
 if __name__== "__main__":
     main(str(sys.argv[1]))
