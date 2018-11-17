@@ -2,12 +2,16 @@
 # Execute this file while passing in a single swf file path. It will output an
 # html file that can open the swf in a browser
 ###############################################################################
-import sys, re
+import sys, re, os
+
+def isValidFilename(test):
+    assert os.path.exists(test), "File not found"
+    return True
 
 def main(filename):
     destfilename = filename
     title = re.search('([a-zA-Z_\-0-9]*)(\.swf$)', filename, re.M).group(1)
-    altTitle = input("Input a title or enter nothing to accept the default: ")
+    altTitle = raw_input("Input a title or enter nothing to accept the default: ")
     if altTitle:
         # subract the length of the matched filename from the full path (+4) to get the base directory and add it onto the new title
         # Also add a '.swf' to the end so that it still fits into later logic
@@ -69,4 +73,18 @@ def main(filename):
     Html_file.close()
 
 if __name__== "__main__":
-    main(str(sys.argv[1]))
+    print("ARGS:", str(sys.argv))
+    # sys.argv[0] is the location of the script, everything else is supplied by the call
+    # so if the sys.argv array is exactly 2 long, then there are a correct number of inputs
+    if len(sys.argv) < 2:
+        # 0 inputs
+        supplied_fp = raw_input("Enter the complete filepath of the swf: ")
+        if isValidFilename(supplied_fp):
+            main(supplied_fp)
+    elif len(sys.argv) == 2:
+        # 1 input
+        if isValidFilename(str(sys.argv[1])):
+            main(str(sys.argv[1]))
+    else:
+        # more than 1 input
+        print("Invalid input. Enter exactly one complete filepath to an .swf")
