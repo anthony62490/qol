@@ -68,6 +68,7 @@ def main(filename):
                     </div>
             </body>
     </html>"""
+    # TODO: Check if the file exists before opening. Do not overwrite files
     Html_file= open(destfilename[:-4] + ".html", "w")
     Html_file.write(out)
     Html_file.close()
@@ -87,4 +88,4 @@ if __name__== "__main__":
             main(str(sys.argv[1]))
     else:
         # more than 1 input
-        print("Invalid input. Enter exactly one complete filepath to an .swf")
+        print("Invalid input. Enter exactly one complete filepath to an .swf (Did you put quotes around the filepath?)")
