@@ -29,7 +29,7 @@ def main():
     print("source: " + source)
     print("blob: ", blob)
     for x in blob:
-        print(x)
+        print("blob index", blob.index(x), "-", x)
     #print("tempblob: " + tempBlob)
 main()
 
