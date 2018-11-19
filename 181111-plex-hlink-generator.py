@@ -14,23 +14,23 @@ def splitByNewLine(array, userInput):
     return array
 
 def main():
-    dest = raw_input("Enter a full destination Filepath:") or "F:\Plex\Shows\Lost\Lost - Season 02"
-    source = raw_input("Enter a full source Filepath:") or "F:\Video\to-be-linked"
+    dest = input("Enter a full destination Filepath:") or "F:\Plex\Shows\Lost\Lost - Season 02"
+    source = input("Enter a full source Filepath:") or "F:\Video\to-be-linked"
     tempBlob = "1\tMan of Science, Man of Faith\t09/21/2005\t\n2\tAdrift\t09/28/2005\t"
     print("Paste a theTVDB text blob. Press Ctrl+D on a new line to confirm:")
     blob = []
     while True:
         try:
-            line = raw_input("")
+            line = input("")
         except EOFError:
             break
         blob = splitByNewLine(blob, line)
-    print "dest: " + dest
-    print "source: " + source
-    print "blob: "
+    print("dest: " + dest)
+    print("source: " + source)
+    print("blob: ", blob)
     for x in blob:
-        print x
-    #print "tempblob: " + tempBlob
+        print(x)
+    #print("tempblob: " + tempBlob)
 main()
 
 """1	Man of Science, Man of Faith	09/21/2005	
