@@ -74,7 +74,6 @@ def main(filename):
     Html_file.close()
 
 if __name__== "__main__":
-    print("ARGS:", str(sys.argv))
     # sys.argv[0] is the location of the script, everything else is supplied by the call
     # so if the sys.argv array is exactly 2 long, then there are a correct number of inputs
     if len(sys.argv) < 2:
@@ -88,4 +87,4 @@ if __name__== "__main__":
             main(str(sys.argv[1]))
     else:
         # more than 1 input
-        print("Invalid input. Enter exactly one complete filepath to an .swf (Did you put quotes around the filepath?)")
+        print("Expected 1 input. Received {0}. Enter exactly one complete filepath to an .swf".format(len(sys.argv) -1))
