@@ -8,9 +8,10 @@ def splitByNewLine(array, userInput):
     #The user's input is treated slightly different when each line is entered by hand
     #or pasted as a block of text. To remedy this, the all user input as it is received,
     #split it by newlines, and append each of them to the supplied array
-    split = userInput.split('\n')
-    for x in split:
-        array.append(x)
+    chunks = userInput.split('\t')
+    if chunks[-1] == '':
+        chunks.pop()
+    array.append(chunks)
     return array
 
 def main():
@@ -25,9 +26,9 @@ def main():
         except EOFError:
             break
         blob = splitByNewLine(blob, line)
+    # At this point, the blob contains an array of arrays. Each array should contain the episode number, the title, and the release date
     print("dest: " + dest)
     print("source: " + source)
-    print("blob: ", blob)
     for x in blob:
         print("blob index", blob.index(x), "-", x)
     #print("tempblob: " + tempBlob)
