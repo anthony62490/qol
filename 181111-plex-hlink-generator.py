@@ -40,8 +40,8 @@ def main():
         dateElements = i[2].split('/')
         year = dateElements.pop()
         dateElements.insert(0, year)
-        i[2] = ''.join(dateElements)
-        # Now everything is formatted correctly. Create a template
+        dateBlock = ''.join(dateElements)
+        # Now everything is formatted correctly. Create a template using the gathered information
     printAll(source, dest, blob)
        
         
