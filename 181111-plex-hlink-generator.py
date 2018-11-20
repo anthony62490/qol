@@ -14,10 +14,15 @@ def splitByNewLine(array, userInput):
     array.append(chunks)
     return array
 
+def printAll(source, destination, data):
+    print("dest: " + destination)
+    print("source: " + source)
+    for x in data:
+        print("index", data.index(x), ":", x)
+
 def main():
     dest = input("Enter a full destination Filepath:") or "F:\\Plex\\Shows\\Show"
     source = input("Enter a full source Filepath:") or "F:\\Video\\to-be-linked"
-    tempBlob = "1\tEpisode1\t01/01/2001\t\n2\tEpisode2\t01/02/2001\t"
     print("Paste a theTVDB text blob. Press Ctrl+D on a new line to confirm:")
     blob = []
     while True:
@@ -27,11 +32,16 @@ def main():
             break
         blob = splitByNewLine(blob, line)
     # At this point, the blob contains an array of arrays. Each array should contain the episode number, the title, and the release date
-    print("dest: " + dest)
-    print("source: " + source)
-    for x in blob:
-        print("blob index", blob.index(x), "-", x)
-    #print("tempblob: " + tempBlob)
+    for i in blob:
+        # Take the date, split it by the delimiter, arrange them in YYYYMMDD format, and put the result back into the blob
+        dateElements = i[2].split('/')
+        year = dateElements.pop()
+        dateElements.insert(0, year)
+        i[2] = ''.join(dateElements)
+    printAll(source, dest, blob)
+       
+        
+
 main()
 
 """1	Episode1	01/01/2001	
