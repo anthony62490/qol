@@ -15,8 +15,8 @@ def splitByNewLine(array, userInput):
     return array
 
 def printAll(source, destination, data):
-    print("dest: " + destination)
-    print("source: " + source)
+    print("dest    : " + destination)
+    print("source  : " + source)
     for x in data:
         print("index", data.index(x), ":", x)
 
@@ -41,6 +41,7 @@ def main():
         year = dateElements.pop()
         dateElements.insert(0, year)
         i[2] = ''.join(dateElements)
+        # Now everything is formatted correctly. Create a template
     printAll(source, dest, blob)
        
         
