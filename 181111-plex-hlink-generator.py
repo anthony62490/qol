@@ -23,13 +23,16 @@ def printAll(source, destination, data):
 def main():
     dest = input("Enter a full destination Filepath:") or "F:\\Plex\\Shows\\Show"
     source = input("Enter a full source Filepath:") or "F:\\Video\\to-be-linked"
-    print("Paste a theTVDB text blob. Press Ctrl+D on a new line to confirm:")
+    print("Paste a theTVDB text blob. Enter a blank line to confirm:")
     blob = []
     while True:
         try:
             line = input("")
+            if not line:
+                raise EOFError
         except EOFError:
             break
+        # TODO: Validate input
         blob = splitByNewLine(blob, line)
     # At this point, the blob contains an array of arrays. Each array should contain the episode number, the title, and the release date
     for i in blob:
