@@ -42,7 +42,7 @@ def main():
         dateElements.insert(0, year)
         dateBlock = ''.join(dateElements)
         # Now everything is formatted correctly. Create a template using the gathered information
-        print(dateBlock, "-", i)
+        print(dateBlock, "-", i[0], i[1])
     printAll(source, dest, blob)
        
         
