@@ -41,8 +41,14 @@ def main():
         year = dateElements.pop()
         dateElements.insert(0, year)
         dateBlock = ''.join(dateElements)
+        # More clearly define elements from existing data
+        # i format: ['5', 'Episode5', '01/05/2001']
+        showName = dest.split('\\')[-1]
+        episodeName = i[1]
+        episodeNum = i[0]
         # Now everything is formatted correctly. Create a template using the gathered information
-        print(dateBlock, "-", i[0], i[1])
+        # Desired Format: MKLINK /H "[dest]\[Show Name - Season #]\[dateblock] - [showName] - s[#]e[#] - [episodeName].[ext]" "[source]"
+        print('MKLINK /H "{0} - Season x\{2} - {3} - sxe{5} - {4}.ext" "{1}"'.format(dest, source, dateBlock, showName, episodeName, episodeNum))
     printAll(source, dest, blob)
        
         
