@@ -35,6 +35,8 @@ def main():
         # TODO: Validate input
         blob = splitByNewLine(blob, line)
     # At this point, the blob contains an array of arrays. Each array should contain the episode number, the title, and the release date
+    seasonNum = input("Season number? ")
+    ext = input("File Extension? ")
     for i in blob:
         # Take the date, split it by the delimiter, arrange them in YYYYMMDD format, and put the result back into the blob
         dateElements = i[2].split('/')
@@ -48,8 +50,8 @@ def main():
         episodeNum = i[0]
         # Now everything is formatted correctly. Create a template using the gathered information
         # Desired Format: MKLINK /H "[dest]\[Show Name - Season #]\[dateblock] - [showName] - s[#]e[#] - [episodeName].[ext]" "[source]"
-        print('MKLINK /H "{0} - Season x\{2} - {3} - sxe{5} - {4}.ext" "{1}"'.format(dest, source, dateBlock, showName, episodeName, episodeNum))
-    printAll(source, dest, blob)
+        print('MKLINK /H "{0} - Season {6}\{2} - {3} - s{6}e{5} - {4}.{7}" "{1}"'.format(dest, source, dateBlock, showName, episodeName, episodeNum, seasonNum, ext))
+    #printAll(source, dest, blob)
        
         
 
