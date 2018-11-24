@@ -21,6 +21,7 @@ def printAll(source, destination, data):
         print("index", data.index(x), ":", x)
 
 def main():
+    print("HLink Generator v 1.0.\n===Please run within a python interpreter for now. cmd.exe does not parse TABs as expected===")
     dest = input("Enter a full destination Filepath:") or "F:\\Plex\\Shows\\Show"
     source = input("Enter a full source Filepath:") or "F:\\Video\\to-be-linked"
     print("Paste a theTVDB text blob. Enter a blank line to confirm:")
