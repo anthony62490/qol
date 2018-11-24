@@ -48,9 +48,9 @@ def main():
         # i format: ['5', 'Episode5', '01/05/2001']
         showName = dest.split('\\')[-1]
         # Set episode name and filter out illegal characters \/:*?"<>|
-        episodeName = re.sub([\\\/:*?\"<>|], '', i[1])
-        episodeNum = i[0]
+        episodeName = re.sub('([\\\/:*?"<>|])+', '', i[1])
         # TODO: Pad episode numbers based on quantity
+        episodeNum = i[0]
         # Now everything is formatted correctly. Create a template using the gathered information
         # Desired Format: MKLINK /H "[dest]\[Show Name - Season #]\[dateblock] - [showName] - s[#]e[#] - [episodeName].[ext]" "[source]"
         print('MKLINK /H "{0} - Season {6}\{2} - {3} - s{6}e{5} - {4}.{7}" "{1}\"'.format(dest, source, dateBlock, showName, episodeName, episodeNum, seasonNum, ext))
@@ -60,8 +60,9 @@ def main():
 
 main()
 
-"""1	Episode1	01/01/2001	
-2	Episode2	01/02/2001	
-3	Episode3	01/03/2001	
-4	Episode4	01/04/2001	
-5	Episode5	01/05/2001	"""
+# Example text blob containing all possible illegal characters
+"""1	Episode1\/:*?"<>|	01/01/2001	
+2	Episode2\/:*?"<>|	01/02/2001	
+3	Episode3\/:*?"<>|	01/03/2001	
+4	Episode4\/:*?"<>|	01/04/2001	
+5	Episode5\/:*?"<>|	01/05/2001	"""
