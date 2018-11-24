@@ -47,7 +47,8 @@ def main():
         # More clearly define elements from existing data
         # i format: ['5', 'Episode5', '01/05/2001']
         showName = dest.split('\\')[-1]
-        episodeName = i[1]
+        # Set episode name and filter out illegal characters \/:*?"<>|
+        episodeName = re.sub([\\\/:*?\"<>|], '', i[1])
         episodeNum = i[0]
         # TODO: Pad episode numbers based on quantity
         # Now everything is formatted correctly. Create a template using the gathered information
