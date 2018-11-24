@@ -52,7 +52,7 @@ def main():
         # TODO: Pad episode numbers based on quantity
         # Now everything is formatted correctly. Create a template using the gathered information
         # Desired Format: MKLINK /H "[dest]\[Show Name - Season #]\[dateblock] - [showName] - s[#]e[#] - [episodeName].[ext]" "[source]"
-        print('MKLINK /H "{0} - Season {6}\{2} - {3} - s{6}e{5} - {4}.{7}" "{1}"'.format(dest, source, dateBlock, showName, episodeName, episodeNum, seasonNum, ext))
+        print('MKLINK /H "{0} - Season {6}\{2} - {3} - s{6}e{5} - {4}.{7}" "{1}\"'.format(dest, source, dateBlock, showName, episodeName, episodeNum, seasonNum, ext))
     #printAll(source, dest, blob)
        
         
