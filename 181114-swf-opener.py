@@ -78,7 +78,8 @@ if __name__== "__main__":
     # so if the sys.argv array is exactly 2 long, then there are a correct number of inputs
     if len(sys.argv) < 2:
         # 0 inputs
-        supplied_fp = input("Enter the complete filepath of the swf: ")
+        supplied_fp = input("Enter the complete filepath of the swf: ").strip('"')
+        
         if isValidFilename(supplied_fp):
             main(supplied_fp)
     elif len(sys.argv) == 2:
